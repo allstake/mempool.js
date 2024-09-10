@@ -1,13 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Network, Protocol } from '../types';
+import { Network } from '../types';
 
-export const getBitcoinAPI = (
+const getEndpoint = (
   hostname: string,
   network: Network,
-  protocol: Protocol,
-  config?: AxiosRequestConfig,
-): AxiosInstance => {
-  let path;
+  ssl: boolean,
+): string => {
+  let path: string;
 
   if (['signet', 'testnet', 'liquidtestnet'].includes(network)) {
     path = `/${network}`;
@@ -19,8 +18,19 @@ export const getBitcoinAPI = (
     throw Error('invalid network');
   }
 
+  return `${ssl ? 'https' : 'http'}://${hostname}${path}/api`;
+};
+
+export const getBitcoinAPI = (
+  hostname: string,
+  network: Network,
+  ssl: boolean,
+  config?: AxiosRequestConfig,
+): AxiosInstance => {
+  const endpoint = getEndpoint(hostname, network, ssl);
+
   return axios.create({
-    baseURL: `${protocol}://${hostname}${path}/api/`,
+    baseURL: endpoint,
     ...config,
   });
 };

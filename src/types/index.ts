@@ -9,8 +9,6 @@ import {
 } from './bitcoin';
 import { AxiosRequestConfig } from 'axios';
 
-export type Protocol = 'http' | 'https';
-
 export type Network =
   | 'signet'
   | 'testnet'
@@ -21,7 +19,7 @@ export type Network =
 export type MempoolSdkConfig = {
   hostname?: string;
   network?: Network;
-  protocol?: Protocol;
+  ssl?: boolean;
   config?: AxiosRequestConfig;
 };
 

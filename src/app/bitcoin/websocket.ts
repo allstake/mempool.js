@@ -17,28 +17,35 @@ import {
   wsStopTrackingMempoolBlock,
 } from '../../services';
 
+const getEndpoint = (
+  hostname: string,
+  network: string,
+  ssl: boolean,
+): string => {
+  let path: string;
+
+  if (['signet', 'testnet', 'liquidtestnet'].includes(network)) {
+    path = `/${network}`;
+  } else if (network === 'mainnet') {
+    path = '';
+  } else if (network === 'liquidmainnet') {
+    path = '/liquid';
+  } else {
+    throw Error('invalid network');
+  }
+
+  return `${ssl ? 'wss' : 'ws'}://${hostname}${path}/api/v1/ws`;
+};
+
 export const useWebsocket = (
   hostname: string,
   network: string,
-  protocol: string,
+  ssl: boolean,
 ): WsInstance => {
-  if (!protocol) {
-    hostname?.includes('localhost') ? (protocol = 'ws') : (protocol = 'wss');
-  } else if (protocol === 'http' || protocol === 'ws') {
-    protocol = 'ws';
-  } else {
-    protocol = 'wss';
-  }
-  if (network && ['testnet', 'signet'].includes(network)) {
-    network = `/${network}`;
-  } else {
-    network = '';
-  }
-
-  const wsEndpoint = `${protocol}://${hostname}${network}/api/v1/ws`;
+  const endpoint = getEndpoint(hostname, network, ssl);
 
   return {
-    wsInit: () => wsInit(wsEndpoint),
+    wsInit: () => wsInit(endpoint),
     wsWantData: (ws: WebSocket, options: string[]) => wsWantData(ws, options),
     wsStopData: (ws: WebSocket) => wsStopData(ws),
     wsTrackAddress: (ws: WebSocket, address: string) =>

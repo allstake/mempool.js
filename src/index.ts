@@ -13,10 +13,10 @@ import { getBitcoinAPI } from './services';
 export const initMempoolSdk = ({
   hostname = 'mempool.space',
   network = 'mainnet',
-  protocol = hostname === 'localhost' ? 'http' : 'https',
+  ssl = hostname !== 'localhost',
   config,
 }: MempoolSdkConfig): MempoolSdk => {
-  const apiBitcoin = getBitcoinAPI(hostname, network, protocol, config);
+  const apiBitcoin = getBitcoinAPI(hostname, network, ssl, config);
 
   return {
     bitcoin: {
@@ -26,7 +26,7 @@ export const initMempoolSdk = ({
       fees: useFees(apiBitcoin),
       mempool: useMempool(apiBitcoin),
       transactions: useTransactions(apiBitcoin),
-      websocket: useWebsocket(hostname, network, protocol),
+      websocket: useWebsocket(hostname, network, ssl),
     },
   };
 };
