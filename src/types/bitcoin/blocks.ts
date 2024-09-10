@@ -14,7 +14,6 @@ export type Block = {
   nonce: number;
   bits: number;
   difficulty: number;
-  [extras: string]: unknown;
 };
 
 export type BlockStatus = {

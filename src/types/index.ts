@@ -5,7 +5,6 @@ import {
   BlockInstance,
   DifficultyInstance,
   FeeInstance,
-  LightningInstance,
   MempoolInstance,
 } from './bitcoin';
 import { AxiosRequestConfig } from 'axios';
@@ -32,7 +31,6 @@ export type MempoolSdk = {
     blocks: BlockInstance;
     difficulty: DifficultyInstance;
     fees: FeeInstance;
-    lightning: LightningInstance;
     mempool: MempoolInstance;
     transactions: TxInstance;
     websocket: WsInstance;
