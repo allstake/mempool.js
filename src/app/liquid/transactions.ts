@@ -30,27 +30,27 @@ export const useTransactions = (api: AxiosInstance): TxLiquidInstance => {
 
   const getTxMerkleProof = async (params: { txid: string }) => {
     const { data } = await api.get<TxMerkleProof>(
-      `/tx/${params.txid}/merkle-proof`
+      `/tx/${params.txid}/merkle-proof`,
     );
     return data;
   };
 
   const getTxOutspend = async (params: { txid: string; vout: number }) => {
     const { data } = await api.get<TxOutspend>(
-      `/tx/${params.txid}/outspend/${params.vout}`
+      `/tx/${params.txid}/outspend/${params.vout}`,
     );
     return data;
   };
 
   const getTxOutspends = async (params: { txid: string }) => {
     const { data } = await api.get<Array<TxOutspend>>(
-      `/tx/${params.txid}/outspends`
+      `/tx/${params.txid}/outspends`,
     );
     return data;
   };
 
   const postTx = async (params: { txhex: string }) => {
-    const { data } = await api.post<string>(`/tx`, params.txhex );
+    const { data } = await api.post<string>(`/tx`, params.txhex);
     return data;
   };
 

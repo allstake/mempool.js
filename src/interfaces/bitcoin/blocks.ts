@@ -14,7 +14,7 @@ export interface Block {
   nonce: number;
   bits: number;
   difficulty: number;
-  extras: any;
+  [extras: string]: unknown;
 }
 
 export interface BlockStatus {
@@ -30,7 +30,7 @@ export interface BlockInstance {
   getBlockTxs: (params: { hash: string; start_index?: number }) => Promise<Tx>;
   getBlockTxids: (params: { hash: string }) => Promise<string[]>;
   getBlockTxid: (params: { hash: string; index: number }) => Promise<string>;
-  getBlockRaw: (params: { hash: string }) => Promise<string>;
+  getBlockRaw: (params: { hash: string }) => Promise<Buffer>;
   getBlockHeader: (params: { hash: string }) => Promise<string>;
   getBlockHeight: (params: { height: number }) => Promise<string>;
   getBlocksTipHeight: () => Promise<number>;

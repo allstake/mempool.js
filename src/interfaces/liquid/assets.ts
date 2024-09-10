@@ -25,5 +25,5 @@ export interface AssetsInstance {
     asset_id: string;
     decimal: boolean;
   }) => Promise<Asset>;
-  getAssetsIcons: () => Promise<string[]>
+  getAssetsIcons: () => Promise<string[]>;
 }

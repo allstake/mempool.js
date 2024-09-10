@@ -25,7 +25,7 @@ const mempool = (
   { hostname, network, protocol, config }: MempoolConfig = {
     hostname: hostnameEndpointDefault,
     network: networkEndpointDefault,
-  }
+  },
 ): MempoolReturn => {
   if (!hostname) hostname = hostnameEndpointDefault;
   if (!network) network = networkEndpointDefault;

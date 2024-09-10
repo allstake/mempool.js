@@ -1,14 +1,12 @@
-import { Tx, TxStatus } from './transactions';
-
 export interface NetworkStatsEntry {
   added: string;
-  avg_base_fee_mtokens: number; 
+  avg_base_fee_mtokens: number;
   avg_capacity: number;
   avg_fee_rate: number;
   channel_count: number;
   clearnet_nodes: number;
   clearnet_tor_nodes: number;
-  id: number; 
+  id: number;
   med_base_fee_mtokens: number;
   med_capacity: number;
   med_fee_rate: number;
@@ -52,7 +50,6 @@ export interface Node {
   closed_channel_count?: number;
 }
 
-
 export interface NodeStats {
   added: number;
   capacity: number;
@@ -75,8 +72,8 @@ export interface Channel {
   funding_ratio?: number;
   closed_by?: string;
   single_funded?: boolean;
-  node_left: Node,
-  node_right: Node,
+  node_left: Node;
+  node_right: Node;
 }
 
 export interface LightningInstance {
@@ -89,10 +86,18 @@ export interface LightningInstance {
   getConnectivityRanking: () => Promise<Node[]>;
   getOldestNodes: () => Promise<Node[]>;
   getNodeStats: (params: { public_key: string }) => Promise<Node>;
-  getHistoricalNodeStats: (params: { public_key: string }) => Promise<NodeStats[]>;
+  getHistoricalNodeStats: (params: {
+    public_key: string;
+  }) => Promise<NodeStats[]>;
   getChannel: (params: { id: string }) => Promise<Channel>;
   getChannelsFromTxIds: (params: { txId: string[] }) => Promise<any[]>;
-  getChannelsFromNodePublicKey: (params: { public_key: string, status: string, index?: number }) => Promise<Channel[]>;
+  getChannelsFromNodePublicKey: (params: {
+    public_key: string;
+    status: string;
+    index?: number;
+  }) => Promise<Channel[]>;
   getChannelsGeodata: () => Promise<any>;
-  getChannelsGeodataByPublicKey: (params: { public_key: string }) => Promise<any[]>;
+  getChannelsGeodataByPublicKey: (params: {
+    public_key: string;
+  }) => Promise<any[]>;
 }

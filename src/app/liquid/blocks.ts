@@ -22,7 +22,7 @@ export const useBlocks = (api: AxiosInstance): BlockLiquidInstance => {
     start_index?: number;
   }) => {
     const { data } = await api.get<Tx>(
-      `/block/${params.hash}/txs/${params.start_index}`
+      `/block/${params.hash}/txs/${params.start_index}`,
     );
     return data;
   };
@@ -34,7 +34,7 @@ export const useBlocks = (api: AxiosInstance): BlockLiquidInstance => {
 
   const getBlockTxid = async (params: { hash: string; index: number }) => {
     const { data } = await api.get<string>(
-      `/block/${params.hash}/txid/${params.index}`
+      `/block/${params.hash}/txid/${params.index}`,
     );
     return data;
   };
@@ -50,7 +50,9 @@ export const useBlocks = (api: AxiosInstance): BlockLiquidInstance => {
   };
 
   const getBlocks = async (params: { start_height?: number }) => {
-    const { data } = await api.get<Block[]>(`/v1/blocks/${params.start_height}`);
+    const { data } = await api.get<Block[]>(
+      `/v1/blocks/${params.start_height}`,
+    );
     return data;
   };
 

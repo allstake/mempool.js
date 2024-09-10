@@ -12,9 +12,14 @@ export const useAddresses = (api: AxiosInstance): AddressInstance => {
     return data;
   };
 
-  const getAddressTxs = async (params: { address: string, after_txid?: string }) => {
+  const getAddressTxs = async (params: {
+    address: string;
+    after_txid?: string;
+  }) => {
     if (params.after_txid) {
-      const { data } = await api.get<Tx[]>(`/address/${params.address}/txs?after_txid=${params.after_txid}`);
+      const { data } = await api.get<Tx[]>(
+        `/address/${params.address}/txs?after_txid=${params.after_txid}`,
+      );
       return data;
     }
     const { data } = await api.get<Tx[]>(`/address/${params.address}/txs`);
@@ -23,21 +28,21 @@ export const useAddresses = (api: AxiosInstance): AddressInstance => {
 
   const getAddressTxsChain = async (params: { address: string }) => {
     const { data } = await api.get<Tx[]>(
-      `/address/${params.address}/txs/chain`
+      `/address/${params.address}/txs/chain`,
     );
     return data;
   };
 
   const getAddressTxsMempool = async (params: { address: string }) => {
     const { data } = await api.get<Tx[]>(
-      `/address/${params.address}/txs/mempool`
+      `/address/${params.address}/txs/mempool`,
     );
     return data;
   };
 
   const getAddressTxsUtxo = async (params: { address: string }) => {
     const { data } = await api.get<AddressTxsUtxo[]>(
-      `/address/${params.address}/utxo`
+      `/address/${params.address}/utxo`,
     );
     return data;
   };

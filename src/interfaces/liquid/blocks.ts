@@ -14,7 +14,7 @@ export interface Block {
   nonce: number;
   bits: number;
   difficulty: number;
-  extras: any;
+  [extras: string]: unknown;
 }
 
 export interface BlockStatus {

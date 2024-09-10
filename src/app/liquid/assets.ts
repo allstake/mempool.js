@@ -18,7 +18,7 @@ export const useAssets = (api: AxiosInstance): AssetsInstance => {
   }) => {
     const paramsMempools = params.is_mempool === true ? '/mempool' : '/chain';
     const { data } = await api.get<Asset>(
-      `/asset/${params.asset_id}/txs${paramsMempools}`
+      `/asset/${params.asset_id}/txs${paramsMempools}`,
     );
     return data;
   };
@@ -29,7 +29,7 @@ export const useAssets = (api: AxiosInstance): AssetsInstance => {
   }) => {
     const paramDecimal = params.decimal === true ? '/decimal' : '';
     const { data } = await api.get<Asset>(
-      `/asset/${params.asset_id}/supply${paramDecimal}`
+      `/asset/${params.asset_id}/supply${paramDecimal}`,
     );
     return data;
   };

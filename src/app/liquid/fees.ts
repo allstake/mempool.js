@@ -13,14 +13,14 @@ export const useFees = (api: AxiosInstance): FeeInstance => {
 
   const getFeesMempoolBlocks = async () => {
     const { data } = await api.get<FeesMempoolBlocks[]>(
-      `/v1/fees/mempool-blocks`
+      `/v1/fees/mempool-blocks`,
     );
     return data;
   };
 
   const getCPFP = async (params: { txid: string }) => {
     const { data } = await api.get<FeesMempoolBlocks[]>(
-      `/v1/cpfp/${params.txid}`
+      `/v1/cpfp/${params.txid}`,
     );
     return data;
   };

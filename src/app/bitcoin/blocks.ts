@@ -12,6 +12,13 @@ export const useBlocks = (api: AxiosInstance): BlockInstance => {
     return data;
   };
 
+  const getBlocks = async (params: { start_height?: number }) => {
+    const { data } = await api.get<Block[]>(
+      `/v1/blocks/${params.start_height}`,
+    );
+    return data;
+  };
+
   const getBlockStatus = async (params: { hash: string }) => {
     const { data } = await api.get<BlockStatus>(`/block/${params.hash}/status`);
     return data;
@@ -22,7 +29,7 @@ export const useBlocks = (api: AxiosInstance): BlockInstance => {
     start_index?: number;
   }) => {
     const { data } = await api.get<Tx>(
-      `/block/${params.hash}/txs/${params.start_index}`
+      `/block/${params.hash}/txs/${params.start_index}`,
     );
     return data;
   };
@@ -34,13 +41,15 @@ export const useBlocks = (api: AxiosInstance): BlockInstance => {
 
   const getBlockTxid = async (params: { hash: string; index: number }) => {
     const { data } = await api.get<string>(
-      `/block/${params.hash}/txid/${params.index}`
+      `/block/${params.hash}/txid/${params.index}`,
     );
     return data;
   };
 
   const getBlockRaw = async (params: { hash: string }) => {
-    const { data } = await api.get<string>(`/block/${params.hash}/raw`);
+    const { data } = await api.get<Buffer>(`/block/${params.hash}/raw`, {
+      responseType: 'arraybuffer',
+    });
     return data;
   };
 
@@ -51,11 +60,6 @@ export const useBlocks = (api: AxiosInstance): BlockInstance => {
 
   const getBlockHeight = async (params: { height: number }) => {
     const { data } = await api.get<string>(`/block-height/${params.height}`);
-    return data;
-  };
-
-  const getBlocks = async (params: { start_height?: number }) => {
-    const { data } = await api.get<Block[]>(`/v1/blocks/${params.start_height}`);
     return data;
   };
 

@@ -25,7 +25,7 @@ export interface MempoolReturn {
     blocks: BlockInstance;
     difficulty: DifficultyInstance;
     fees: FeeInstance;
-    lightning: LightningInstance
+    lightning: LightningInstance;
     mempool: MempoolInstance;
     transactions: TxInstance;
     websocket: WsInstance;
