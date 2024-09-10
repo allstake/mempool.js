@@ -5,7 +5,7 @@ import {
   NetworkStats,
   Node,
   NodeStats,
-} from '../../interfaces/bitcoin/lightning';
+} from '../../types';
 
 export const useLightning = (api: AxiosInstance): LightningInstance => {
   const getNetworkStats = async () => {

@@ -1,6 +1,6 @@
 import { Tx } from './transactions';
 
-export interface Block {
+export type Block = {
   id: string;
   height: number;
   version: number;
@@ -15,15 +15,15 @@ export interface Block {
   bits: number;
   difficulty: number;
   [extras: string]: unknown;
-}
+};
 
-export interface BlockStatus {
+export type BlockStatus = {
   in_best_chain: boolean;
   height: number;
   next_best: string;
-}
+};
 
-export interface BlockInstance {
+export type BlockInstance = {
   getBlock: (params: { hash: string }) => Promise<Block>;
   getBlocks: (params: { start_height?: number }) => Promise<Block[]>;
   getBlockStatus: (params: { hash: string }) => Promise<BlockStatus>;
@@ -35,4 +35,4 @@ export interface BlockInstance {
   getBlockHeight: (params: { height: number }) => Promise<string>;
   getBlocksTipHeight: () => Promise<number>;
   getBlocksTipHash: () => Promise<string>;
-}
+};

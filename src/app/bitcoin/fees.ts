@@ -1,9 +1,5 @@
 import { AxiosInstance } from 'axios';
-import {
-  FeesRecommended,
-  FeesMempoolBlocks,
-  FeeInstance,
-} from '../../interfaces/bitcoin/fees';
+import { FeesRecommended, FeesMempoolBlocks, FeeInstance } from '../../types';
 
 export const useFees = (api: AxiosInstance): FeeInstance => {
   const getFeesRecommended = async () => {

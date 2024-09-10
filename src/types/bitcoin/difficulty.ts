@@ -1,4 +1,4 @@
-export interface Adjustment {
+export type Adjustment = {
   progressPercent: number;
   difficultyChange: number;
   estimatedRetargetDate: number;
@@ -9,28 +9,28 @@ export interface Adjustment {
   timeAvg: number;
   timeOffset: number;
   expectedBlocks: number;
-}
+};
 
-export interface Hashrate {
+export type Hashrate = {
   hashrates: HashRateData[];
   difficulty: DifficultyData[];
   currentHashrate: number;
   currentDifficulty: number;
-}
+};
 
-export interface HashRateData {
+export type HashRateData = {
   timestamp: number;
   avgHashrate: number;
-}
+};
 
-export interface DifficultyData {
+export type DifficultyData = {
   time: number;
   height: number;
   difficulty: number;
   adjustment: number;
-}
+};
 
-export interface DifficultyInstance {
+export type DifficultyInstance = {
   getDifficultyAdjustment: () => Promise<Adjustment>;
   getHashrate: (params: { interval: string }) => Promise<Hashrate>;
-}
+};

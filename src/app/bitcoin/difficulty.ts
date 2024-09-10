@@ -1,9 +1,5 @@
 import { AxiosInstance } from 'axios';
-import {
-  Adjustment,
-  DifficultyInstance,
-  Hashrate,
-} from '../../interfaces/bitcoin/difficulty';
+import { Adjustment, DifficultyInstance, Hashrate } from '../../types';
 
 export const useDifficulty = (api: AxiosInstance): DifficultyInstance => {
   const getDifficultyAdjustment = async () => {

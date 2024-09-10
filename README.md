@@ -14,15 +14,15 @@ pnpm add @allstake/mempool.js
 
 ## Usage
 ```js
-import connectMempool from '@allstake/mempool.js';
+import { initMempoolSdk } from '@allstake/mempool.js';
 
-const mempool = connectMempool({
-  protocol: 'https', // optional, defaults to http for localhost, otherwise https
+const mempool = initMempoolSdk({
   hostname: 'mempool.space',
-  network: 'testnet', // 'signet' | 'testnet' | 'mainnet',
-  config: { // optional axios request config to add to requests
+  network: 'testnet',
+  protocol: 'https',
+  config: {
     headers: {
-      authorization: 'authorization token',
+      authorization: '<Authorization Token>',
     },
   },
 });

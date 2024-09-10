@@ -1,7 +1,20 @@
-import WebSocket from 'ws';
+if (typeof global !== 'undefined') {
+  global.WebSocket = require('ws');
+}
 
 const TIMEOUT_DURATION = 5000;
+
 const MAX_RETRY_COUNT = 3;
+
+export const wsInit = (endpoint: string): WebSocket => {
+  const ws = new WebSocket(endpoint);
+
+  ws.addEventListener('open', () => {
+    ws.send(JSON.stringify({ action: 'init' }));
+  });
+
+  return ws;
+};
 
 const wsActionWrapper = (ws: WebSocket, action: unknown): void => {
   let retryCount = 0;
@@ -17,16 +30,6 @@ const wsActionWrapper = (ws: WebSocket, action: unknown): void => {
     }
   };
   sendData();
-};
-
-export const wsInit = (endpoint: string): WebSocket => {
-  const ws = new WebSocket(endpoint);
-
-  ws.addEventListener('open', function open() {
-    ws.send(JSON.stringify({ action: 'init' }));
-  });
-
-  return ws;
 };
 
 export const wsWantData = (ws: WebSocket, options: string[]): void => {

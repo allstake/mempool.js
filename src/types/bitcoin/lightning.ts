@@ -1,4 +1,4 @@
-export interface NetworkStatsEntry {
+export type NetworkStatsEntry = {
   added: string;
   avg_base_fee_mtokens: number;
   avg_capacity: number;
@@ -14,14 +14,14 @@ export interface NetworkStatsEntry {
   tor_nodes: number;
   total_capacity: number;
   unannounced_nodes: number;
-}
+};
 
-export interface NetworkStats {
+export type NetworkStats = {
   latest: NetworkStatsEntry;
   previous: NetworkStatsEntry;
-}
+};
 
-export interface Node {
+export type Node = {
   alias: string;
   public_key: string;
   channels: number;
@@ -48,15 +48,15 @@ export interface Node {
   active_channel_count?: number;
   opened_channel_count?: number;
   closed_channel_count?: number;
-}
+};
 
-export interface NodeStats {
+export type NodeStats = {
   added: number;
   capacity: number;
   channels: number;
-}
+};
 
-export interface Channel {
+export type Channel = {
   id: number;
   short_id: string;
   capacity: number;
@@ -74,9 +74,9 @@ export interface Channel {
   single_funded?: boolean;
   node_left: Node;
   node_right: Node;
-}
+};
 
-export interface LightningInstance {
+export type LightningInstance = {
   getNetworkStats: () => Promise<NetworkStats>;
   getNodesInCountry: (params: { country: string }) => Promise<Node[]>;
   getNodesStatsPerCountry: () => Promise<any>;
@@ -100,4 +100,4 @@ export interface LightningInstance {
   getChannelsGeodataByPublicKey: (params: {
     public_key: string;
   }) => Promise<any[]>;
-}
+};

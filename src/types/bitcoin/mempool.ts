@@ -1,19 +1,19 @@
-export interface Mempool {
+export type Mempool = {
   count: number;
   vsize: number;
   total_fee: number;
   fee_histogram: number[];
-}
+};
 
-export interface MempoolInstance {
+export type MempoolInstance = {
   getMempool: () => Promise<Mempool[]>;
   getMempoolTxids: () => Promise<string[]>;
   getMempoolRecent: () => Promise<MempoolRecent[]>;
-}
+};
 
-export interface MempoolRecent {
+export type MempoolRecent = {
   txid: string;
   fee: number;
   vsize: number;
   value: number;
-}
+};

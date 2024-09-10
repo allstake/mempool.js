@@ -1,10 +1,5 @@
 import { AxiosInstance } from 'axios';
-import {
-  Address,
-  AddressTxsUtxo,
-  AddressInstance,
-} from '../../interfaces/bitcoin/addresses';
-import { Tx } from '../../interfaces/bitcoin/transactions';
+import { Address, AddressTxsUtxo, AddressInstance, Tx } from '../../types';
 
 export const useAddresses = (api: AxiosInstance): AddressInstance => {
   const getAddress = async (params: { address: string }) => {

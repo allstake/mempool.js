@@ -5,7 +5,7 @@ import {
   TxMerkleProof,
   TxOutspend,
   TxInstance,
-} from '../../interfaces/bitcoin/transactions';
+} from '../../types';
 
 export const useTransactions = (api: AxiosInstance): TxInstance => {
   const getTx = async (params: { txid: string }) => {

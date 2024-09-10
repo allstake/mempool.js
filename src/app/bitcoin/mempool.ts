@@ -1,9 +1,5 @@
 import { AxiosInstance } from 'axios';
-import {
-  Mempool,
-  MempoolRecent,
-  MempoolInstance,
-} from '../../interfaces/bitcoin/mempool';
+import { Mempool, MempoolRecent, MempoolInstance } from '../../types';
 
 export const useMempool = (api: AxiosInstance): MempoolInstance => {
   const getMempool = async () => {
