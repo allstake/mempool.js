@@ -3,14 +3,12 @@ import { Block, BlockStatus, BlockInstance, Tx } from '../../types';
 
 export const useBlocks = (api: AxiosInstance): BlockInstance => {
   const getBlock = async (params: { hash: string }) => {
-    const { data } = await api.get<Block>(`/v1/block/${params.hash}`);
+    const { data } = await api.get<Block>(`/block/${params.hash}`);
     return data;
   };
 
   const getBlocks = async (params: { start_height?: number }) => {
-    const { data } = await api.get<Block[]>(
-      `/v1/blocks/${params.start_height}`,
-    );
+    const { data } = await api.get<Block[]>(`/blocks/${params.start_height}`);
     return data;
   };
 
