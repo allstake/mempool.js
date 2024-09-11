@@ -19,7 +19,7 @@ import { initMempoolSdk } from '@allstake/mempool.js';
 const mempool = initMempoolSdk({
   hostname: 'mempool.space',
   network: 'testnet',
-  protocol: 'https',
+  ssl: true,
   config: {
     headers: {
       authorization: '<Authorization Token>',
