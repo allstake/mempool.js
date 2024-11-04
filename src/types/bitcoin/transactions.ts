@@ -28,12 +28,16 @@ export type Vout = {
   value: number;
 };
 
-export type TxStatus = {
-  confirmed: boolean;
-  block_height: number;
-  block_hash: string;
-  block_time: number;
-};
+export type TxStatus =
+  | {
+      confirmed: true;
+      block_height: number;
+      block_hash: string;
+      block_time: number;
+    }
+  | {
+      confirmed: false;
+    };
 
 export type TxMerkleProof = {
   block_height: number;

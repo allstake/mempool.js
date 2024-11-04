@@ -24,7 +24,7 @@ const getEndpoint = (
 ): string => {
   let path: string;
 
-  if (['signet', 'testnet', 'liquidtestnet'].includes(network)) {
+  if (['signet', 'testnet', 'testnet4', 'liquidtestnet'].includes(network)) {
     path = `/${network}`;
   } else if (network === 'mainnet') {
     path = '';
