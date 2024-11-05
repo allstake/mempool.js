@@ -1,6 +1,6 @@
 {
   "name": "@allstake/mempool.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NPM package module for Mempool APIs.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
