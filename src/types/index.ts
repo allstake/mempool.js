@@ -12,6 +12,7 @@ import { AxiosRequestConfig } from 'axios';
 export type Network =
   | 'signet'
   | 'testnet'
+  | 'testnet4'
   | 'mainnet'
   | 'liquidtestnet'
   | 'liquidmainnet';
